@@ -19,7 +19,7 @@ import java.util.List;
 import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Service
-public class PricesServiceImpl implements PricesService {
+public class PriceServiceImpl implements PriceService {
 
     private final PriceRepository priceRepository;
     private final BrandService brandService;
@@ -28,7 +28,7 @@ public class PricesServiceImpl implements PricesService {
     ModelMapper model = new ModelMapper();
 
     @Autowired
-    public PricesServiceImpl(PriceRepository priceRepository, BrandService brandService, ProductService productService) {
+    public PriceServiceImpl(PriceRepository priceRepository, BrandService brandService, ProductService productService) {
         this.priceRepository = priceRepository;
         this.brandService = brandService;
         this.productService = productService;

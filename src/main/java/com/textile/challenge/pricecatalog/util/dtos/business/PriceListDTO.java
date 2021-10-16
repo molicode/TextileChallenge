@@ -1,18 +1,15 @@
 package com.textile.challenge.pricecatalog.util.dtos.business;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PriceListDTO implements Serializable {
+public class PriceListDTO {
 
-    private static final long serialVersionUID = 1L;
+    private Long priceListId;
+    private String name;
 
-    private Integer priceListId;
-    private String description;
 }

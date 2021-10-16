@@ -1,6 +1,10 @@
-package com.textile.challenge.pricecatalog.util.exceptions;
+package com.textile.challenge.pricecatalog.util.exceptions.handler;
 
 import com.textile.challenge.pricecatalog.util.dtos.errors.ErrorDTO;
+import com.textile.challenge.pricecatalog.util.exceptions.BrandNotFoundException;
+import com.textile.challenge.pricecatalog.util.exceptions.PriceListNotFoundException;
+import com.textile.challenge.pricecatalog.util.exceptions.PriceNotFoundException;
+import com.textile.challenge.pricecatalog.util.exceptions.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -16,6 +20,11 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
 
     @ExceptionHandler(PriceNotFoundException.class)
     public ResponseEntity<ErrorDTO> springHandlePriceNotFound(Exception ex, WebRequest request) throws IOException {
+        return this.formateErrorResponse(ex, request);
+    }
+
+    @ExceptionHandler(PriceListNotFoundException.class)
+    public ResponseEntity<ErrorDTO> springHandlePriceListNotFound(Exception ex, WebRequest request) throws IOException {
         return this.formateErrorResponse(ex, request);
     }
 

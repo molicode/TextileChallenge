@@ -7,7 +7,7 @@ import com.textile.challenge.pricecatalog.util.exceptions.ProductNotFoundExcepti
 
 import java.time.LocalDateTime;
 
-public interface PricesService {
+public interface PriceService {
 
     PriceDTO getProductPrice(Long productId, Long brandId, LocalDateTime applyDate) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException;
 

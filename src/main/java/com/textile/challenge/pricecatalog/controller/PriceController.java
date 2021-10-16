@@ -1,6 +1,6 @@
 package com.textile.challenge.pricecatalog.controller;
 
-import com.textile.challenge.pricecatalog.service.PricesService;
+import com.textile.challenge.pricecatalog.service.PriceService;
 import com.textile.challenge.pricecatalog.util.dtos.business.PriceDTO;
 import com.textile.challenge.pricecatalog.util.exceptions.BrandNotFoundException;
 import com.textile.challenge.pricecatalog.util.exceptions.PriceNotFoundException;
@@ -18,26 +18,27 @@ import java.time.LocalDateTime;
 
 @RestController()
 @RequestMapping(path = "/product")
-public class ProductController {
+public class PriceController {
 
     private static final String SERVICE_SUCCESS = "Success";
     private static final String SERVICE_OK = "OK";
 
-    private final PricesService pricesService;
+    private final PriceService priceService;
 
     @Autowired
-    public ProductController(PricesService pricesService) {
-        this.pricesService = pricesService;
+    public PriceController(PriceService priceService) {
+        this.priceService = priceService;
     }
 
-    @GetMapping("/price/{productId}/brand{brandId}/{date}")
+    @GetMapping("/price/productId/{productId}/brandId/{brandId}/{date}")
     public PriceBinderResponse<PriceDTO> getProductPrice(
-            @PathVariable Long productId, @PathVariable Long brandId, @PathVariable(value = "date")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date
+            @PathVariable Long productId,
+            @PathVariable Long brandId,
+            @PathVariable(value = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date
     ) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException {
         return new PriceBinderResponse<>(
                 SERVICE_SUCCESS, String.valueOf(HttpStatus.OK), SERVICE_OK,
-                pricesService.getProductPrice(productId, brandId, date));
+                priceService.getProductPrice(productId, brandId, date));
     }
 
 }
