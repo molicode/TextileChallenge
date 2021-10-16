@@ -1,6 +1,7 @@
 package com.textile.challenge.pricecatalog.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Table(name = "T_PRICE_LIST")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class PriceList {
 
     @Id

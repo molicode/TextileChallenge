@@ -3,48 +3,57 @@ package com.textile.challenge.pricecatalog.service;
 import com.textile.challenge.pricecatalog.entity.Price;
 import com.textile.challenge.pricecatalog.repository.PriceRepository;
 import com.textile.challenge.pricecatalog.util.dtos.business.PriceDTO;
-import com.textile.challenge.pricecatalog.util.exceptions.NotFoundExceptions;
-import com.textile.challenge.pricecatalog.util.mapper.PriceMapper;
+import com.textile.challenge.pricecatalog.util.dtos.errors.BusinessErrorMessage;
+import com.textile.challenge.pricecatalog.util.exceptions.BrandNotFoundException;
+import com.textile.challenge.pricecatalog.util.exceptions.PriceNotFoundException;
+import com.textile.challenge.pricecatalog.util.exceptions.ProductNotFoundException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static org.springframework.util.CollectionUtils.isEmpty;
+
 @Service
 public class PricesServiceImpl implements PricesService {
 
-    @Autowired
-    private PriceRepository priceRepository;
+    private final PriceRepository priceRepository;
+    private final BrandService brandService;
+    private final ProductService productService;
+
+    ModelMapper model = new ModelMapper();
 
     @Autowired
-    private PriceMapper priceMapper;
-
-
-    @Override
-    public PriceDTO getProductPrice(Long productId, Long brandId, LocalDateTime applyDate) throws NotFoundExceptions {
-        List<Price> priceList = this.priceRepository.findByProductIdBrandIdAndApplyDate(brandId, productId, applyDate);
-
-        if (CollectionUtils.isEmpty(priceList)) {
-            System.out.println("Error ");
-            //throw new PriceNotFoundException(String.format(PRICE_NOT_FOUND_MSG, productId));
-        }
-
-        if (priceList.size() == 1) {
-            return priceMapper.priceToPriceDto(priceList.get(0), productId, brandId);
-        } else {
-            return getPriceMaxPriority(priceList);
-        }
-
+    public PricesServiceImpl(PriceRepository priceRepository, BrandService brandService, ProductService productService) {
+        this.priceRepository = priceRepository;
+        this.brandService = brandService;
+        this.productService = productService;
     }
 
+    @Override
+    public PriceDTO getProductPrice(Long productId, Long brandId, LocalDateTime applyDate) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException {
+        this.validateFields(brandId, productId);
+
+        List<Price> priceList = this.priceRepository.findByProductIdBrandIdAndApplyDate(brandId, productId, applyDate);
+
+        if (isEmpty(priceList)) {
+            throw new PriceNotFoundException(String.format(BusinessErrorMessage.PRICE_NOT_FOUND_MESSAGE, productId));
+        }
+
+        return (priceList.size() == 1) ? model.map(priceList.get(0), PriceDTO.class) : getPriceMaxPriority(priceList);
+    }
+
+    private void validateFields(Long brandId, Long productId) throws BrandNotFoundException, ProductNotFoundException {
+        this.brandService.validateBrandId(brandId);
+        this.productService.validateProductId(productId);
+    }
 
     private PriceDTO getPriceMaxPriority(List<Price> priceList) {
-        Price price = Collections.max(priceList, Comparator.comparingInt(Price::getPriority));
-        return this.priceMapper.priceToPriceDto(price, price.getProduct().getProductId(), price.getBrand().getBrandId());
+        return model.map(Collections.max(priceList, Comparator.comparingInt(Price::getPriority)), PriceDTO.class);
     }
 
 }
