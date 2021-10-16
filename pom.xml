@@ -53,12 +53,12 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
+            <version>${springfox-swagger.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
+            <version>${springfox-swagger.version}</version>
         </dependency>
 
         <!-- tests -->
@@ -75,6 +75,13 @@
             <version>${flyway-core.version}</version>
         </dependency>
 
+        <!-- mapper -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -89,6 +96,7 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+
                 </configuration>
             </plugin>
             <plugin>
@@ -111,6 +119,8 @@
         <flyway-core.version>8.0.0</flyway-core.version>
         <flyway-maven-plugin.version>8.0.0</flyway-maven-plugin.version>
         <java.version>11</java.version>
+        <springfox-swagger.version>2.9.2</springfox-swagger.version>
+        <modelmapper.version>2.4.3</modelmapper.version>
     </properties>
 
 </project>
