@@ -35,7 +35,7 @@ public class PriceServiceImpl implements PriceService {
     }
 
     @Override
-    public PriceDTO getProductPrice(Long productId, Long brandId, LocalDateTime applyDate) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException {
+    public PriceDTO getProductPrice(Integer productId, Integer brandId, LocalDateTime applyDate) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException {
         this.validateFields(brandId, productId);
 
         List<Price> priceList = this.priceRepository.findByProductIdBrandIdAndApplyDate(brandId, productId, applyDate);
@@ -47,7 +47,7 @@ public class PriceServiceImpl implements PriceService {
         return (priceList.size() == 1) ? model.map(priceList.get(0), PriceDTO.class) : getPriceMaxPriority(priceList);
     }
 
-    private void validateFields(Long brandId, Long productId) throws BrandNotFoundException, ProductNotFoundException {
+    private void validateFields(Integer brandId, Integer productId) throws BrandNotFoundException, ProductNotFoundException {
         this.brandService.validateBrandId(brandId);
         this.productService.validateProductId(productId);
     }

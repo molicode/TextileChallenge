@@ -20,7 +20,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void validateProductId(Long productId) throws ProductNotFoundException {
+    public void validateProductId(Integer productId) throws ProductNotFoundException {
         Optional<Product> productOptional = productRepository.findById(productId);
 
         if (productOptional.isEmpty()) {

@@ -20,7 +20,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public void validateBrandId(Long brandId) throws BrandNotFoundException {
+    public void validateBrandId(Integer brandId) throws BrandNotFoundException {
         Optional<Brand> brandOptional = brandRepository.findById(brandId);
 
         if (brandOptional.isEmpty()) {

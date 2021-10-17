@@ -20,7 +20,7 @@ public class PriceListImpl implements PriceListService {
     }
 
     @Override
-    public void validatePriceListId(Long priceListId) throws PriceListNotFoundException {
+    public void validatePriceListId(Integer priceListId) throws PriceListNotFoundException {
         Optional<PriceList> priceListOptional = priceListRepository.findById(priceListId);
 
         if (priceListOptional.isEmpty()) {

@@ -9,12 +9,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface PriceRepository extends JpaRepository<Price, Long> {
+public interface PriceRepository extends JpaRepository<Price, Integer> {
 
     @Query("SELECT p FROM Price p "
             + "WHERE p.brand.brandId = :brandId "
             + "AND p.product.productId = :productId "
             + "AND :aplicationDate BETWEEN p.startDate AND p.endDate")
-    List<Price> findByProductIdBrandIdAndApplyDate(Long brandId, Long productId, LocalDateTime aplicationDate);
+    List<Price> findByProductIdBrandIdAndApplyDate(Integer brandId, Integer productId, LocalDateTime aplicationDate);
 
 }

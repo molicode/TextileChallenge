@@ -4,6 +4,6 @@ import com.textile.challenge.pricecatalog.util.exceptions.PriceListNotFoundExcep
 
 public interface PriceListService {
 
-    void validatePriceListId(Long priceListId) throws PriceListNotFoundException;
+    void validatePriceListId(Integer priceListId) throws PriceListNotFoundException;
 
 }

@@ -5,12 +5,11 @@ import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PriceDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

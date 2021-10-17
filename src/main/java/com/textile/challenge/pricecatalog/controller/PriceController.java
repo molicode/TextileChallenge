@@ -5,14 +5,11 @@ import com.textile.challenge.pricecatalog.util.dtos.business.PriceDTO;
 import com.textile.challenge.pricecatalog.util.exceptions.BrandNotFoundException;
 import com.textile.challenge.pricecatalog.util.exceptions.PriceNotFoundException;
 import com.textile.challenge.pricecatalog.util.exceptions.ProductNotFoundException;
-import com.textile.challenge.pricecatalog.util.responde.PriceBinderResponse;
+import com.textile.challenge.pricecatalog.util.responde.PriceResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -30,13 +27,14 @@ public class PriceController {
         this.priceService = priceService;
     }
 
-    @GetMapping("/price/productId/{productId}/brandId/{brandId}/{date}")
-    public PriceBinderResponse<PriceDTO> getProductPrice(
-            @PathVariable Long productId,
-            @PathVariable Long brandId,
-            @PathVariable(value = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date
+    @GetMapping("/productId/{productId}/brandId/{brandId}/price")
+    public PriceResponse<PriceDTO> getProductPrice(
+            @PathVariable Integer productId,
+            @PathVariable Integer brandId,
+            @RequestParam("date")
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date
     ) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException {
-        return new PriceBinderResponse<>(
+        return new PriceResponse<>(
                 SERVICE_SUCCESS, String.valueOf(HttpStatus.OK), SERVICE_OK,
                 priceService.getProductPrice(productId, brandId, date));
     }

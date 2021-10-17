@@ -4,6 +4,6 @@ import com.textile.challenge.pricecatalog.util.exceptions.ProductNotFoundExcepti
 
 public interface ProductService {
 
-    void validateProductId(Long productId) throws ProductNotFoundException;
+    void validateProductId(Integer productId) throws ProductNotFoundException;
 
 }

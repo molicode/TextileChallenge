@@ -9,6 +9,6 @@ import java.time.LocalDateTime;
 
 public interface PriceService {
 
-    PriceDTO getProductPrice(Long productId, Long brandId, LocalDateTime applyDate) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException;
+    PriceDTO getProductPrice(Integer productId, Integer brandId, LocalDateTime applyDate) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException;
 
 }

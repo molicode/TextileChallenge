@@ -1,11 +1,13 @@
 package com.textile.challenge.pricecatalog.util.responde;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
-public class PriceBinderResponse<T> {
+@Builder
+@Getter
+@Setter
+public class PriceResponse<T> {
     private String status;
     private String code;
     private String message;

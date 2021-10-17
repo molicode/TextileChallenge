@@ -4,12 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BrandDTO {
+public class BrandDTO implements Serializable {
 
-    private Long brandId;
+    private static final long serialVersionUID = 1L;
+
+    private Integer brandId;
     private String name;
 
 }
