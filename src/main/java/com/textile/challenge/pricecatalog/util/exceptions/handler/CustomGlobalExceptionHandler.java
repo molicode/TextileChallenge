@@ -15,10 +15,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+/**
+ * @author Luis Molina
+ */
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
     /**
-     *
      * @param exception
      * @param request
      * @return
@@ -30,7 +32,6 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
     }
 
     /**
-     *
      * @param exception
      * @param request
      * @return
@@ -42,7 +43,6 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
     }
 
     /**
-     *
      * @param exception
      * @param request
      * @return
@@ -54,7 +54,6 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
     }
 
     /**
-     *
      * @param exception
      * @param request
      * @return
@@ -66,7 +65,6 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
     }
 
     /**
-     *
      * @param exception
      * @param request
      * @return

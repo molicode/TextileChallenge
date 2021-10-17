@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * @author Luis Molina
+ */
 @Entity
 @Data
 @Table(name = "T_PRODUCT")

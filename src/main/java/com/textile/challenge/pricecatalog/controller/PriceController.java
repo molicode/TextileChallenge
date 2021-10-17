@@ -13,13 +13,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * @author Luis Molina
+ */
 @RestController()
 @RequestMapping(path = "/product")
 public class PriceController {
 
     private static final String SERVICE_SUCCESS = "Success";
     private static final String SERVICE_OK = "OK";
-
     private final PriceService priceService;
 
     @Autowired
@@ -28,6 +30,10 @@ public class PriceController {
     }
 
     /**
+     *
+     * Método controlador del servicio getProductPrice()
+     * Nos devuelve el precio a aplicar a un prodcuto
+     * de acuerdo a una tarifa en una fecha en particular.
      *
      * @param productId
      * @param brandId

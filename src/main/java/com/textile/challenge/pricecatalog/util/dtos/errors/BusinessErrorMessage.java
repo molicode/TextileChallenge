@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author Luis Molina
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

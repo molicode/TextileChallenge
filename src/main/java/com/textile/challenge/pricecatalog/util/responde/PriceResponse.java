@@ -2,9 +2,9 @@ package com.textile.challenge.pricecatalog.util.responde;
 
 import lombok.*;
 
+
 /**
- *
- * @param <T>
+ * @author Luis Molina
  */
 @Data
 @AllArgsConstructor

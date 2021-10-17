@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * @author Luis Molina
+ */
 @Service
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
     /**
-     *
      * @param productRepository
      */
     @Autowired
@@ -24,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     /**
-     *
+     * Implementación del método de la interfaz ProductService que valida si un producto (productId) existe
      * @param productId
      * @throws ProductNotFoundException
      */

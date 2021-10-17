@@ -10,6 +10,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * @author Luis Molina
+ */
 @Entity
 @Data
 @Table(name = "T_PRICE")

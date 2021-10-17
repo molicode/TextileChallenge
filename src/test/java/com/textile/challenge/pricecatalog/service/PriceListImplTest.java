@@ -15,6 +15,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
+/**
+ * @author Luis Molina
+ */
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 class PriceListImplTest {

@@ -5,6 +5,9 @@ import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * @author Luis Molina
+ */
 @Getter
 @Setter
 @NoArgsConstructor

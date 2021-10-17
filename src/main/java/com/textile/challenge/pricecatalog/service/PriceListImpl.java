@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * @author Luis Molina
+ */
 @Service
 public class PriceListImpl implements PriceListService {
 
     private final PriceListRepository priceListRepository;
 
     /**
-     *
      * @param priceListRepository
      */
     @Autowired
@@ -24,6 +26,7 @@ public class PriceListImpl implements PriceListService {
     }
 
     /**
+     * Implementación del método de la interfaz PriceListService que valida si una tafifa (priceList) existe
      *
      * @param priceListId
      * @throws PriceListNotFoundException

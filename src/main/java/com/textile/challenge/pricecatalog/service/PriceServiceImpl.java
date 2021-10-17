@@ -18,6 +18,9 @@ import java.util.List;
 
 import static org.springframework.util.CollectionUtils.isEmpty;
 
+/**
+ * @author Luis Molina
+ */
 @Service
 public class PriceServiceImpl implements PriceService {
 
@@ -28,7 +31,6 @@ public class PriceServiceImpl implements PriceService {
     ModelMapper model = new ModelMapper();
 
     /**
-     *
      * @param priceRepository
      * @param brandService
      * @param productService
@@ -41,6 +43,9 @@ public class PriceServiceImpl implements PriceService {
     }
 
     /**
+     * Implementación del Método getProductPrice() en la clase PriceServiceImpl
+     * Nos devuelve el precio a aplicar a un prodcuto
+     * de acuerdo a una tarifa en una fecha en particular.
      *
      * @param productId
      * @param brandId
@@ -64,6 +69,7 @@ public class PriceServiceImpl implements PriceService {
     }
 
     /**
+     * Método que valida si las Ids de cadena y de producto existen.
      *
      * @param brandId
      * @param productId
@@ -76,6 +82,7 @@ public class PriceServiceImpl implements PriceService {
     }
 
     /**
+     * Método que devuelve la tarifa de más alta prioridad
      *
      * @param priceList
      * @return

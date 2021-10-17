@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * @author Luis Molina
+ */
 @Service
 public class BrandServiceImpl implements BrandService {
 
     private final BrandRepository brandRepository;
 
     /**
-     *
      * @param brandRepository
      */
     @Autowired
@@ -24,6 +26,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     /**
+     * Implementación del método de la interfaz BrandService que valida si el id de candea (brand) existe
      *
      * @param brandId
      * @throws BrandNotFoundException

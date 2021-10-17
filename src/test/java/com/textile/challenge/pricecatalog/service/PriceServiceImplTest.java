@@ -17,6 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
+/**
+ * @author Luis Molina
+ */
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 class PriceServiceImplTest {
@@ -34,7 +37,6 @@ class PriceServiceImplTest {
     PriceServiceImpl priceService;
 
     /**
-     *
      * @throws BrandNotFoundException
      * @throws ProductNotFoundException
      */
