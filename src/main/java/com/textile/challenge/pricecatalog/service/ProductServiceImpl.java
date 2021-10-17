@@ -14,11 +14,20 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
+    /**
+     *
+     * @param productRepository
+     */
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
+    /**
+     *
+     * @param productId
+     * @throws ProductNotFoundException
+     */
     @Override
     public void validateProductId(Integer productId) throws ProductNotFoundException {
         Optional<Product> productOptional = productRepository.findById(productId);

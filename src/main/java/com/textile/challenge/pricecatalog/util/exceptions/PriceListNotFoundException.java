@@ -1,7 +1,10 @@
 package com.textile.challenge.pricecatalog.util.exceptions;
 
 public class PriceListNotFoundException extends Exception {
-
+    /**
+     *
+     * @param errorMessage
+     */
     public PriceListNotFoundException(String errorMessage) {
         super(errorMessage);
     }

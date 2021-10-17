@@ -27,6 +27,16 @@ public class PriceController {
         this.priceService = priceService;
     }
 
+    /**
+     *
+     * @param productId
+     * @param brandId
+     * @param date
+     * @return
+     * @throws PriceNotFoundException
+     * @throws BrandNotFoundException
+     * @throws ProductNotFoundException
+     */
     @GetMapping("/productId/{productId}/brandId/{brandId}/price")
     public PriceResponse<PriceDTO> getProductPrice(
             @PathVariable Integer productId,

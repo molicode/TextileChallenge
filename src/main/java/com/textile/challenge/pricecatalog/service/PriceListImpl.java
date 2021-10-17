@@ -14,11 +14,20 @@ public class PriceListImpl implements PriceListService {
 
     private final PriceListRepository priceListRepository;
 
+    /**
+     *
+     * @param priceListRepository
+     */
     @Autowired
     public PriceListImpl(PriceListRepository priceListRepository) {
         this.priceListRepository = priceListRepository;
     }
 
+    /**
+     *
+     * @param priceListId
+     * @throws PriceListNotFoundException
+     */
     @Override
     public void validatePriceListId(Integer priceListId) throws PriceListNotFoundException {
         Optional<PriceList> priceListOptional = priceListRepository.findById(priceListId);

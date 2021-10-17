@@ -1,0 +1,11 @@
+com.textile.challenge.pricecatalog
+com.textile.challenge.pricecatalog.controller
+com.textile.challenge.pricecatalog.entity
+com.textile.challenge.pricecatalog.repository
+com.textile.challenge.pricecatalog.service
+com.textile.challenge.pricecatalog.util.config
+com.textile.challenge.pricecatalog.util.dtos.business
+com.textile.challenge.pricecatalog.util.dtos.errors
+com.textile.challenge.pricecatalog.util.exceptions
+com.textile.challenge.pricecatalog.util.exceptions.handler
+com.textile.challenge.pricecatalog.util.responde

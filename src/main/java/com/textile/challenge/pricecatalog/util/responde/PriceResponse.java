@@ -2,6 +2,10 @@ package com.textile.challenge.pricecatalog.util.responde;
 
 import lombok.*;
 
+/**
+ *
+ * @param <T>
+ */
 @Data
 @AllArgsConstructor
 @Builder

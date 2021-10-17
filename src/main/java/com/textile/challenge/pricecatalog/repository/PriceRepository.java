@@ -11,6 +11,13 @@ import java.util.List;
 @Repository
 public interface PriceRepository extends JpaRepository<Price, Integer> {
 
+    /**
+     *
+     * @param brandId
+     * @param productId
+     * @param aplicationDate
+     * @return
+     */
     @Query("SELECT p FROM Price p "
             + "WHERE p.brand.brandId = :brandId "
             + "AND p.product.productId = :productId "

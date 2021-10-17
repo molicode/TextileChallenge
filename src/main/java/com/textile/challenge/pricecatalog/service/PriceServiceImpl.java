@@ -27,6 +27,12 @@ public class PriceServiceImpl implements PriceService {
 
     ModelMapper model = new ModelMapper();
 
+    /**
+     *
+     * @param priceRepository
+     * @param brandService
+     * @param productService
+     */
     @Autowired
     public PriceServiceImpl(PriceRepository priceRepository, BrandService brandService, ProductService productService) {
         this.priceRepository = priceRepository;
@@ -34,6 +40,16 @@ public class PriceServiceImpl implements PriceService {
         this.productService = productService;
     }
 
+    /**
+     *
+     * @param productId
+     * @param brandId
+     * @param applyDate
+     * @return
+     * @throws PriceNotFoundException
+     * @throws BrandNotFoundException
+     * @throws ProductNotFoundException
+     */
     @Override
     public PriceDTO getProductPrice(Integer productId, Integer brandId, LocalDateTime applyDate) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException {
         this.validateFields(brandId, productId);
@@ -47,11 +63,23 @@ public class PriceServiceImpl implements PriceService {
         return (priceList.size() == 1) ? model.map(priceList.get(0), PriceDTO.class) : getPriceMaxPriority(priceList);
     }
 
+    /**
+     *
+     * @param brandId
+     * @param productId
+     * @throws BrandNotFoundException
+     * @throws ProductNotFoundException
+     */
     private void validateFields(Integer brandId, Integer productId) throws BrandNotFoundException, ProductNotFoundException {
         this.brandService.validateBrandId(brandId);
         this.productService.validateProductId(productId);
     }
 
+    /**
+     *
+     * @param priceList
+     * @return
+     */
     private PriceDTO getPriceMaxPriority(List<Price> priceList) {
         return model.map(Collections.max(priceList, Comparator.comparingInt(Price::getPriority)), PriceDTO.class);
     }
