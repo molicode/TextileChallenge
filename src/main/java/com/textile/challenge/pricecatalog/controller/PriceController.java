@@ -51,7 +51,9 @@ public class PriceController {
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date
     ) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException {
         return new PriceResponse<>(
-                SERVICE_SUCCESS, String.valueOf(HttpStatus.OK), SERVICE_OK,
+                SERVICE_SUCCESS,
+                String.valueOf(HttpStatus.OK),
+                SERVICE_OK,
                 priceService.getProductPrice(productId, brandId, date));
     }
 

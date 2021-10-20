@@ -20,56 +20,27 @@ import java.time.LocalDateTime;
  */
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
-    /**
-     * @param exception
-     * @param request
-     * @return
-     * @throws IOException
-     */
+
     @ExceptionHandler(PriceNotFoundException.class)
     public ResponseEntity<ErrorDTO> springHandlePriceNotFound(Exception exception, WebRequest request) throws IOException {
         return this.formateErrorResponse(exception, request);
     }
 
-    /**
-     * @param exception
-     * @param request
-     * @return
-     * @throws IOException
-     */
     @ExceptionHandler(PriceListNotFoundException.class)
     public ResponseEntity<ErrorDTO> springHandlePriceListNotFound(Exception exception, WebRequest request) throws IOException {
         return this.formateErrorResponse(exception, request);
     }
 
-    /**
-     * @param exception
-     * @param request
-     * @return
-     * @throws IOException
-     */
     @ExceptionHandler(BrandNotFoundException.class)
     public ResponseEntity<ErrorDTO> springHandleBrandNotFound(Exception exception, WebRequest request) throws IOException {
         return this.formateErrorResponse(exception, request);
     }
 
-    /**
-     * @param exception
-     * @param request
-     * @return
-     * @throws IOException
-     */
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorDTO> springHandleProductNotFound(Exception exception, WebRequest request) throws IOException {
         return this.formateErrorResponse(exception, request);
     }
 
-    /**
-     * @param exception
-     * @param request
-     * @return
-     * @throws IOException
-     */
     private ResponseEntity<ErrorDTO> formateErrorResponse(Exception exception, WebRequest request) throws IOException {
         ErrorDTO errorDto = ErrorDTO.builder()
                 .timestamp(LocalDateTime.now())

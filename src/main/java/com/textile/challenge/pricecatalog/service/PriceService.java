@@ -12,20 +12,6 @@ import java.time.LocalDateTime;
  */
 public interface PriceService {
 
-    /**
-     *
-     * Método getProductPrice() del servicio PriceService
-     * Nos devuelve el precio a aplicar a un prodcuto
-     * de acuerdo a una tarifa en una fecha en particular.
-     *
-     * @param productId
-     * @param brandId
-     * @param applyDate
-     * @return
-     * @throws PriceNotFoundException
-     * @throws BrandNotFoundException
-     * @throws ProductNotFoundException
-     */
     PriceDTO getProductPrice(Integer productId, Integer brandId, LocalDateTime applyDate) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException;
 
 }

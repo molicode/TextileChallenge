@@ -28,9 +28,6 @@ class PriceListImplTest {
     @InjectMocks
     PriceListImpl priceListService;
 
-    /**
-     *
-     */
     @Test
     public void validateIncorrectBrandId() {
         Optional<PriceList> priceListOptional = Optional.empty();

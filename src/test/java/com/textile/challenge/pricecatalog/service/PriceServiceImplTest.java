@@ -36,10 +36,6 @@ class PriceServiceImplTest {
     @InjectMocks
     PriceServiceImpl priceService;
 
-    /**
-     * @throws BrandNotFoundException
-     * @throws ProductNotFoundException
-     */
     @Test
     public void getProductPriceErrorTest() throws BrandNotFoundException, ProductNotFoundException {
 

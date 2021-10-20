@@ -17,19 +17,11 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
-    /**
-     * @param productRepository
-     */
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    /**
-     * Implementación del método de la interfaz ProductService que valida si un producto (productId) existe
-     * @param productId
-     * @throws ProductNotFoundException
-     */
     @Override
     public void validateProductId(Integer productId) throws ProductNotFoundException {
         Optional<Product> productOptional = productRepository.findById(productId);

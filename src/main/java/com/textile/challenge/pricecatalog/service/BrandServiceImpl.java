@@ -17,20 +17,11 @@ public class BrandServiceImpl implements BrandService {
 
     private final BrandRepository brandRepository;
 
-    /**
-     * @param brandRepository
-     */
     @Autowired
     public BrandServiceImpl(BrandRepository brandRepository) {
         this.brandRepository = brandRepository;
     }
 
-    /**
-     * Implementación del método de la interfaz BrandService que valida si el id de candea (brand) existe
-     *
-     * @param brandId
-     * @throws BrandNotFoundException
-     */
     @Override
     public void validateBrandId(Integer brandId) throws BrandNotFoundException {
         Optional<Brand> brandOptional = brandRepository.findById(brandId);

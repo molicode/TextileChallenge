@@ -17,20 +17,11 @@ public class PriceListImpl implements PriceListService {
 
     private final PriceListRepository priceListRepository;
 
-    /**
-     * @param priceListRepository
-     */
     @Autowired
     public PriceListImpl(PriceListRepository priceListRepository) {
         this.priceListRepository = priceListRepository;
     }
 
-    /**
-     * Implementación del método de la interfaz PriceListService que valida si una tafifa (priceList) existe
-     *
-     * @param priceListId
-     * @throws PriceListNotFoundException
-     */
     @Override
     public void validatePriceListId(Integer priceListId) throws PriceListNotFoundException {
         Optional<PriceList> priceListOptional = priceListRepository.findById(priceListId);

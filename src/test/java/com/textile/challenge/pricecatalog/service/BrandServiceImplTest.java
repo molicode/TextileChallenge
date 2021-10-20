@@ -28,9 +28,6 @@ class BrandServiceImplTest {
     @InjectMocks
     BrandServiceImpl brandService;
 
-    /**
-     *
-     */
     @Test
     public void validateIncorrectBrandId() {
         Optional<Brand> brandOptional = Optional.empty();

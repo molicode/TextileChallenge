@@ -27,14 +27,8 @@ public class PriceServiceImpl implements PriceService {
     private final PriceRepository priceRepository;
     private final BrandService brandService;
     private final ProductService productService;
-
     ModelMapper model = new ModelMapper();
 
-    /**
-     * @param priceRepository
-     * @param brandService
-     * @param productService
-     */
     @Autowired
     public PriceServiceImpl(PriceRepository priceRepository, BrandService brandService, ProductService productService) {
         this.priceRepository = priceRepository;
@@ -42,23 +36,9 @@ public class PriceServiceImpl implements PriceService {
         this.productService = productService;
     }
 
-    /**
-     * Implementación del Método getProductPrice() en la clase PriceServiceImpl
-     * Nos devuelve el precio a aplicar a un prodcuto
-     * de acuerdo a una tarifa en una fecha en particular.
-     *
-     * @param productId
-     * @param brandId
-     * @param applyDate
-     * @return
-     * @throws PriceNotFoundException
-     * @throws BrandNotFoundException
-     * @throws ProductNotFoundException
-     */
     @Override
     public PriceDTO getProductPrice(Integer productId, Integer brandId, LocalDateTime applyDate) throws PriceNotFoundException, BrandNotFoundException, ProductNotFoundException {
         this.validateFields(brandId, productId);
-
         List<Price> priceList = this.priceRepository.findByProductIdBrandIdAndApplyDate(brandId, productId, applyDate);
 
         if (isEmpty(priceList)) {
@@ -68,25 +48,11 @@ public class PriceServiceImpl implements PriceService {
         return (priceList.size() == 1) ? model.map(priceList.get(0), PriceDTO.class) : getPriceMaxPriority(priceList);
     }
 
-    /**
-     * Método que valida si las Ids de cadena y de producto existen.
-     *
-     * @param brandId
-     * @param productId
-     * @throws BrandNotFoundException
-     * @throws ProductNotFoundException
-     */
     private void validateFields(Integer brandId, Integer productId) throws BrandNotFoundException, ProductNotFoundException {
         this.brandService.validateBrandId(brandId);
         this.productService.validateProductId(productId);
     }
 
-    /**
-     * Método que devuelve la tarifa de más alta prioridad
-     *
-     * @param priceList
-     * @return
-     */
     private PriceDTO getPriceMaxPriority(List<Price> priceList) {
         return model.map(Collections.max(priceList, Comparator.comparingInt(Price::getPriority)), PriceDTO.class);
     }

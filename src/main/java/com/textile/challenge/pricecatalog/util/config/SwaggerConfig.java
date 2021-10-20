@@ -17,9 +17,6 @@ public class SwaggerConfig {
 
     private static final String PACKAGE_SWAGGER = "com.textile.challenge.pricecatalog";
 
-    /**
-     * @return
-     */
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
